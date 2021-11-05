@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import Contact from '../../components/Contact'
 import ContactList from '../../components/ContactList'
+import Form from '../../components/Form'
 
 const listMock = [{
   id: 0,
@@ -57,6 +58,15 @@ const DesignSystem: FC = () => {
         </h2>
         <ContactList list={listMock} />
       </div>
+
+      <div className='mt-8'>
+        <h2 className='px-4 py-8 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
+          <span className='block text-indigo-600'>Form message</span>
+        </h2>
+        <Form />
+      </div>
+
+
     </main>
   )
 }
