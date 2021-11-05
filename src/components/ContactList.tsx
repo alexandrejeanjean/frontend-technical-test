@@ -10,7 +10,9 @@ const ContactList = ({ list }: Props) => {
   return (
     <ul className='flex flex-col'>
       {list.map((contact) => (
-        <Contact key={contact.id} senderNickname={contact.senderNickname} />
+        <li>
+          <Contact key={contact.id} senderNickname={contact.senderNickname} />
+        </li>
       ))}
     </ul>
   )

@@ -4,16 +4,19 @@ type Props = {
 }
 
 const Contact = ({ senderNickname }: Props) => {
+
+  const handleClick = () => {
+    console.log("open tab")
+  }
+
   return (
-    <li className='flex items-center py-4 border-b-2 border-gray-50'>
-      <img
-        className='flex items-center justify-center w-12 h-12 mr-3 rounded-full'
-        src='https://via.placeholder.com/150'
-        alt=''
-      />
-      <p className='flex-1 font-bold'>{senderNickname}</p>
+    <button onClick={handleClick} className='inline-flex items-center w-full h-full px-3 py-4 border-b-2 border-gray-50 hover:bg-indigo-200 focus:bg-indigo-300 active:bg-indigo-100'>
+      <div className='flex items-center justify-center w-12 h-12 mr-3 bg-gray-300 rounded-full'>
+        <p>{senderNickname[0]}</p>
+      </div>
+      <p className='flex-1 font-bold text-left'>{senderNickname}</p>
       <span className='arrow right '></span>
-    </li>
+    </button>
   )
 }
 

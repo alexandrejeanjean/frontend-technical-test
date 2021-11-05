@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import Contact from '../../components/Contact'
 import ContactList from '../../components/ContactList'
+import DialogBubble from '../../components/DialogBubble'
 import Form from '../../components/Form'
 
 const listMock = [{
@@ -64,6 +65,14 @@ const DesignSystem: FC = () => {
           <span className='block text-indigo-600'>Form message</span>
         </h2>
         <Form />
+      </div>
+
+      <div className='mt-8'>
+        <h2 className='px-4 py-8 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
+          <span className='block text-indigo-600'>Dialog bubble</span>
+        </h2>
+        <DialogBubble body="Hello leboncoin, nice to meet you" authorId={0} />
+        <DialogBubble body="Hello leboncoin, nice to meet you" authorId={1} />
       </div>
 
 
