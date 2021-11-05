@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import Contact from './contact'
+import Contact from './Contact'
 
 const List = [{ name: 'Alexandre Jeanjean' }, { name: 'Océane Olmi' }]
 

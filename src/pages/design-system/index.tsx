@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import Contact from '../../components/contact'
+import Contact from '../../components/Contact'
 import ContactList from '../../components/ContactList'
 
 const DesignSystem: FC = () => {

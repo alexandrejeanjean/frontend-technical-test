@@ -1,6 +1,9 @@
 module.exports = {
   testEnvironment: "jsdom",
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  setupFiles: [
+    '<rootDir>/setup.js',
+  ],
   setupFilesAfterEnv: ['<rootDir>/jest/setupFilesAfterEnv.js'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest'
