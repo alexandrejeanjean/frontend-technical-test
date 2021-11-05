@@ -1,10 +1,9 @@
-import type { FC } from 'react'
 
 type Props = {
-  name: string
+  senderNickname: string
 }
 
-const Contact = ({ name }: Props) => {
+const Contact = ({ senderNickname }: Props) => {
   return (
     <li className='flex items-center py-4 border-b-2 border-gray-50'>
       <img
@@ -12,7 +11,7 @@ const Contact = ({ name }: Props) => {
         src='https://via.placeholder.com/150'
         alt=''
       />
-      <p className='flex-1 font-bold'>{name}</p>
+      <p className='flex-1 font-bold'>{senderNickname}</p>
       <span className='arrow right '></span>
     </li>
   )

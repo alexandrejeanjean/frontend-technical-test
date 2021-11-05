@@ -2,6 +2,20 @@ import type { FC } from 'react'
 import Contact from '../../components/Contact'
 import ContactList from '../../components/ContactList'
 
+const listMock = [{
+  id: 0,
+  recipientId: 0,
+  recipientNickname: "Recipient nickname",
+  senderId: 0,
+  senderNickname: "Alexandre Jeanjean"
+}, {
+  id: 1,
+  recipientId: 1,
+  recipientNickname: "Recipient nickname",
+  senderId: 1,
+  senderNickname: "Océane Olmi"
+}]
+
 const DesignSystem: FC = () => {
   return (
     <main className='p-10'>
@@ -34,14 +48,14 @@ const DesignSystem: FC = () => {
         <h2 className='px-4 py-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
           <span className='block text-indigo-600'>Contact item</span>
         </h2>
-        <Contact name='Name Surname' />
+        <Contact senderNickname='Name Surname' />
       </div>
 
       <div className='mt-8 '>
         <h2 className='px-4 py-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
           <span className='block text-indigo-600'>Contact List</span>
         </h2>
-        <ContactList />
+        <ContactList list={listMock} />
       </div>
     </main>
   )

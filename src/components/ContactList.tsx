@@ -1,13 +1,16 @@
-import type { FC } from 'react'
+import { Conversation } from "../types/conversation"
 import Contact from './Contact'
 
-const List = [{ name: 'Alexandre Jeanjean' }, { name: 'Océane Olmi' }]
 
-const ContactList: FC = () => {
+type Props = {
+  list: Conversation[];
+}
+
+const ContactList = ({ list }: Props) => {
   return (
     <ul className='flex flex-col'>
-      {List.map((contact, id) => (
-        <Contact key={'contact_' + id} name={contact.name} />
+      {list.map((contact) => (
+        <Contact key={contact.id} senderNickname={contact.senderNickname} />
       ))}
     </ul>
   )
