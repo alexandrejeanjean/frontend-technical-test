@@ -9,4 +9,13 @@
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  @apply border-indigo-600;
+}
+
+.main-container-height {
+  height: calc(100vh - 132px);
+}
+
+.list-height {
+  height: calc(100% - 50px);
 }

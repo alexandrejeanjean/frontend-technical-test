@@ -42,7 +42,47 @@ const listMock = [{
   recipientNickname: "Recipient nickname",
   senderId: 1,
   senderNickname: "Océane Olmi"
-}]
+},
+{
+  id: 0,
+  recipientId: 0,
+  recipientNickname: "Recipient nickname",
+  senderId: 0,
+  senderNickname: "Alexandre Jeanjean"
+}, {
+  id: 1,
+  recipientId: 1,
+  recipientNickname: "Recipient nickname",
+  senderId: 1,
+  senderNickname: "Océane Olmi"
+},
+{
+  id: 0,
+  recipientId: 0,
+  recipientNickname: "Recipient nickname",
+  senderId: 0,
+  senderNickname: "Alexandre Jeanjean"
+}, {
+  id: 1,
+  recipientId: 1,
+  recipientNickname: "Recipient nickname",
+  senderId: 1,
+  senderNickname: "Océane Olmi"
+},
+{
+  id: 0,
+  recipientId: 0,
+  recipientNickname: "Recipient nickname",
+  senderId: 0,
+  senderNickname: "Alexandre Jeanjean"
+}, {
+  id: 1,
+  recipientId: 1,
+  recipientNickname: "Recipient nickname",
+  senderId: 1,
+  senderNickname: "Océane Olmi"
+}
+]
 
 
 const Home: FC = () => {
@@ -58,9 +98,10 @@ const Home: FC = () => {
         ></meta>
       </Head>
 
-      <main>
-        <h1 className="w-full py-5 mx-auto text-3xl font-extrabold tracking-tight text-center text-indigo-900 bg-yellow-400 border-b-2 border-gray-100 sm:text-4xl">LebonMessager</h1>
-        <div className="flex w-full h-screen pb-3">
+      <header><h1 className="w-full py-5 mx-auto text-3xl font-extrabold tracking-tight text-center text-indigo-900 bg-yellow-400 border-b-2 border-gray-100 sm:text-4xl">LebonMessager</h1></header>
+
+      <main className="w-full overflow-hidden main-container-height">
+        <div className="flex h-full pb-3">
           <section className="w-1/2 border-r-2 border-gray-100">
             <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
             <ContactList list={listMock} />

@@ -8,7 +8,7 @@ type Props = {
 
 const ContactList = ({ list }: Props) => {
   return (
-    <ul className='flex flex-col'>
+    <ul className='flex flex-col overflow-y-scroll list-height'>
       {list.map((contact) => (
         <li>
           <Contact key={contact.id} senderNickname={contact.senderNickname} />
