@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import useFetch from "use-http";
 import { Conversation } from "../types/conversation";
+import { API_ENDPOINT } from "../utils/contants";
 import { getLoggedUserId } from "../utils/getLoggedUserId";
 
 const useGetConversations = () => {
     const [conversations, setConversations] = useState<Conversation[]>([]);
-    const { get, response, loading, error } = useFetch('http://localhost:3005')
+    const { get, response, loading, error } = useFetch(API_ENDPOINT)
     const loggedUserId = getLoggedUserId();
 
     useEffect(() => { fetch() }, []);

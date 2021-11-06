@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "use-http";
 import { Message } from "../types/message";
+import { API_ENDPOINT } from "../utils/contants";
 
 type Props = {
     conversationId: number;
@@ -8,7 +9,7 @@ type Props = {
 
 const useGetConversationMessages = ({ conversationId }: Props) => {
     const [messages, setMessages] = useState<Message[]>([]);
-    const { get, response, loading, error } = useFetch('http://localhost:3005')
+    const { get, response, loading, error } = useFetch(API_ENDPOINT)
 
     useEffect(() => { fetch() }, [conversationId]);
 
