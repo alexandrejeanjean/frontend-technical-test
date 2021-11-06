@@ -8,9 +8,9 @@ const useGetConversations = () => {
     const { get, response, loading, error } = useFetch('http://localhost:3005')
     const loggedUserId = getLoggedUserId();
 
-    useEffect(() => { initializeConversations() }, []);
+    useEffect(() => { fetch() }, []);
 
-    const initializeConversations = async () => {
+    const fetch = async () => {
         const conversations = await get(`/conversations/${loggedUserId}`)
         if (response.ok) setConversations(conversations);
     }

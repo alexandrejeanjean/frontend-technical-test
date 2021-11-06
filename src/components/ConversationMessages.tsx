@@ -6,7 +6,10 @@ type Props = {
 }
 
 const ConversationMessages = ({ conversationId }: Props) => {
+    if (!conversationId) return null;
+
     const { messages, loading, error } = useGetConversationMessages({ conversationId });
+
 
     return (
         <ul className='flex flex-col overflow-y-scroll list-height'>

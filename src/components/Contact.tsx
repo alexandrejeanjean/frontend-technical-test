@@ -1,16 +1,14 @@
 
 type Props = {
-  senderNickname: string
+  senderNickname: string;
+  conversationId: number;
+  handleConversationSelection: (conversationId: number) => void;
 }
 
-const Contact = ({ senderNickname }: Props) => {
-
-  const handleClick = () => {
-    console.log("open tab")
-  }
+const Contact = ({ senderNickname, conversationId, handleConversationSelection }: Props) => {
 
   return (
-    <button onClick={handleClick} className='inline-flex items-center w-full h-full px-3 py-4 border-b-2 border-gray-50 hover:bg-indigo-200 focus:bg-indigo-300 active:bg-indigo-100'>
+    <button onClick={() => handleConversationSelection(conversationId)} className='inline-flex items-center w-full h-full px-3 py-4 border-b-2 border-gray-50 hover:bg-indigo-200 focus:bg-indigo-300 active:bg-indigo-100'>
       <div className='flex items-center justify-center w-12 h-12 mr-3 bg-indigo-700 rounded-full'>
         <p className="font-medium text-white">{senderNickname[0]}</p>
       </div>

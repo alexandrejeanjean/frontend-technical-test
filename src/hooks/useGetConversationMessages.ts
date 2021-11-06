@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "use-http";
 import { Message } from "../types/message";
-import { getLoggedUserId } from "../utils/getLoggedUserId";
 
 type Props = {
     conversationId: number;
@@ -10,14 +9,14 @@ type Props = {
 const useGetConversationMessages = ({ conversationId }: Props) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const { get, response, loading, error } = useFetch('http://localhost:3005')
-    const loggedUserId = getLoggedUserId();
 
-    useEffect(() => { initializeConversations() }, []);
+    useEffect(() => { fetch() }, [conversationId]);
 
-    const initializeConversations = async () => {
-        const messages = await get(`/conversations/${loggedUserId}/${conversationId}`)
+    const fetch = async () => {
+        const messages = await get(`/messages/${conversationId}`)
         if (response.ok) setMessages(messages);
     }
+
 
     return { messages, loading, error };
 }

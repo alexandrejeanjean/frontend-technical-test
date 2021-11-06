@@ -16,7 +16,7 @@ const Form = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="messageInput" className="font-bold text-primary-blue">Message</label>
+            <label htmlFor="messageInput" className="font-bold text-indigo-700">Message</label>
             <div className="relative mt-1.5">
                 <label className="sr-only">"Votre message"</label>
                 <input type="textarea" placeholder=""

@@ -10,6 +10,11 @@ const Home: FC = () => {
   const year = new Date().getFullYear()
   const [selectedConversation, setSelectedConversation] = useState(null);
 
+  const handleConversationSelection = (conversationId: number) => {
+    setSelectedConversation(conversationId);
+  }
+
+
   return (
     <div>
       <Head>
@@ -26,7 +31,7 @@ const Home: FC = () => {
         <div className="flex h-full pb-3">
           <section className="w-1/2 border-r-2 border-gray-100">
             <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
-            <ContactList />
+            <ContactList handleConversationSelection={handleConversationSelection} />
           </section>
           <section className="relative w-1/2">
             <div className="absolute bottom-0 left-0 w-full px-3">
