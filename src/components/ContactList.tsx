@@ -1,17 +1,15 @@
-import { Conversation } from "../types/conversation"
-import Contact from './Contact'
+import useGetConversations from '../hooks/useGetConversations';
+import Contact from './Contact';
 
 
-type Props = {
-  list: Conversation[];
-}
+const ContactList = () => {
+  const { conversations, loading, error } = useGetConversations();
 
-const ContactList = ({ list }: Props) => {
   return (
     <ul className='flex flex-col overflow-y-scroll list-height'>
-      {list.map((contact) => (
-        <li>
-          <Contact key={contact.id} senderNickname={contact.senderNickname} />
+      {conversations.map((contact) => (
+        <li key={contact.id}>
+          <Contact senderNickname={contact.senderNickname} />
         </li>
       ))}
     </ul>
