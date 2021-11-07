@@ -6,25 +6,25 @@ import { Conversation } from '../types/conversation';
 import { getLoggedUserId } from '../utils/getLoggedUserId';
 
 type Props = {
-    conversationId: Pick<Conversation, "id">;
+    conversation: Conversation;
     refetchMessages: () => void;
 }
 
-const Form = ({ conversationId, refetchMessages }: Props) => {
+const Form = ({ conversation, refetchMessages }: Props) => {
 
-    if (!conversationId) return null;
+    if (!conversation.id) return null;
 
     const [message, setMessage] = useState('');
     const authorId = getLoggedUserId();
 
-    const { postMessage, response, loading, error } = usePostMessage({ conversationId: conversationId, authorId: authorId, message: message });
+    const { postMessage, error } = usePostMessage({ conversationId: conversation.id, authorId: authorId, message: message });
 
 
     const resetMessage = () => setMessage('');
 
     useEffect(() => {
-        if (conversationId) resetMessage();
-    }, [conversationId])
+        if (conversation.id) resetMessage();
+    }, [conversation])
 
 
     const handleChange = (event) => {
@@ -33,13 +33,17 @@ const Form = ({ conversationId, refetchMessages }: Props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (message.length === 0) {
+            throw new Error("Missing message value");
+        }
+
         postMessage().then(() => {
             resetMessage();
             refetchMessages();
         }).catch(error => {
             console.log("error", error);
         })
-
     }
 
     return (

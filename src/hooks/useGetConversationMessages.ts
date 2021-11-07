@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import useFetch, { CachePolicies } from "use-http";
 import { API_ENDPOINT } from "../server/contants";
-import { Conversation } from "../types/conversation";
 import { Message } from "../types/message";
 
 type Props = {
-    conversationId: Pick<Conversation, "id">;
+    conversationId: number;
 }
 
 const useGetConversationMessages = ({ conversationId }: Props) => {
@@ -21,7 +20,6 @@ const useGetConversationMessages = ({ conversationId }: Props) => {
         const messages = await get(`/messages/${conversationId}`)
         if (response.ok) setMessages(messages);
     }
-
 
     return { fetch, messages, loading, error };
 }

@@ -1,8 +1,9 @@
 import useGetConversations from '../hooks/useGetConversations';
+import { Conversation } from '../types/conversation';
 import Contact from './Contact';
 
 type Props = {
-  handleConversationSelection: (conversationId: number) => void;
+  handleConversationSelection: (conversation: Conversation) => void;
 }
 
 const ContactList = ({ handleConversationSelection }: Props) => {
@@ -12,7 +13,7 @@ const ContactList = ({ handleConversationSelection }: Props) => {
     <ul className='flex flex-col overflow-y-scroll list-height'>
       {conversations.map((conversation) => (
         <li key={conversation.id}>
-          <Contact senderNickname={conversation.senderNickname} conversationId={conversation.id} handleConversationSelection={handleConversationSelection} />
+          <Contact conversation={conversation} handleConversationSelection={handleConversationSelection} />
         </li>
       ))}
     </ul>

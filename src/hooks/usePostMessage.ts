@@ -1,10 +1,9 @@
 import useFetch from "use-http";
 import { API_ENDPOINT } from "../server/contants";
-import { Conversation } from "../types/conversation";
 
 
 type Props = {
-    conversationId: Pick<Conversation, "id">;
+    conversationId: number;
     authorId: number;
     message: string;
 }

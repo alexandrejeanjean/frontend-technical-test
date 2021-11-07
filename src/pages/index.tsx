@@ -9,12 +9,13 @@ export type ConversationId = Pick<IConversation, "id">;
 
 const Home: FC = () => {
   const year = new Date().getFullYear()
-  const [selectedConversation, setSelectedConversation] = useState<ConversationId>(null);
+  const [selectedConversation, setSelectedConversation] = useState<IConversation>(null);
+  const [view, setView] = useState('list');
 
-  const handleConversationSelection = (conversationId) => {
-    setSelectedConversation(conversationId);
+  const handleConversationSelection = (conversation) => {
+    setView('conversation');
+    setSelectedConversation(conversation);
   }
-
 
   return (
     <div>
@@ -30,13 +31,16 @@ const Home: FC = () => {
 
       <main className="w-full overflow-hidden main-container-height">
         <div className="flex h-full pb-3">
-          <section className="w-1/2 border-r-2 border-gray-100">
-            <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
-            <ContactList handleConversationSelection={handleConversationSelection} />
+          <section className="border-r-2 border-gray-100 lgd:w-full lg:w-1/2">
+            <>
+              <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
+              <ContactList handleConversationSelection={handleConversationSelection} />
+            </>
           </section>
-          <section className="relative w-1/2">
-            <Conversation conversationId={selectedConversation} />
+          <section className="relative lgd:w-full lg:w-1/2 lgd:hidden">
+            <Conversation conversation={selectedConversation} />
           </section>
+
         </div>
       </main>
 
