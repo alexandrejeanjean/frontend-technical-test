@@ -18,7 +18,7 @@ const Home: FC = () => {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Frontend Technical test - Leboncoin</title>
         <meta
@@ -27,25 +27,42 @@ const Home: FC = () => {
         ></meta>
       </Head>
 
-      <header><h1 className="w-full py-5 mx-auto text-3xl font-extrabold tracking-tight text-center text-indigo-900 bg-yellow-400 border-b-2 border-gray-100 sm:text-4xl">LebonMot</h1></header>
+      <header>
+        <h1 className="w-full py-5 mx-auto text-3xl font-extrabold tracking-tight text-center text-indigo-900 bg-yellow-400 border-b-2 border-gray-100 sm:text-4xl">LebonMot</h1>
+      </header>
 
-      <main className="w-full overflow-hidden main-container-height">
-        <div className="flex h-full pb-3">
-          <section className="border-r-2 border-gray-100 lgd:w-full lg:w-1/2">
-            <>
-              <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
-              <ContactList handleConversationSelection={handleConversationSelection} />
-            </>
+      <main>
+
+        {/* Desktop view */}
+        <div className="flex w-full h-full pb-3 overflow-hidden main-container-height lgd:hidden">
+          <section className="w-1/2 border-r-2 border-gray-100">
+            <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
+            <ContactList handleConversationSelection={handleConversationSelection} />
           </section>
-          <section className="relative lgd:w-full lg:w-1/2 lgd:hidden">
+          <section className="relative w-1/2">
             <Conversation conversation={selectedConversation} />
           </section>
-
         </div>
-      </main>
+
+        {/* Mobile view */}
+        <div className="h-full pb-3 overflow-hidden main-container-height lg:hidden">
+          <section className="border-r-2 border-gray-100">
+            {view === 'list' &&
+              <>
+                <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
+                <ContactList handleConversationSelection={handleConversationSelection} />
+              </>
+            }
+          </section>
+          <section className="relative w-full h-full">
+            {view === 'conversation' && <Conversation conversation={selectedConversation} />}
+          </section>
+        </div>
+
+      </main >
 
       <footer className={styles.footer}>&copy; leboncoin - {year}</footer>
-    </div>
+    </>
   )
 }
 
