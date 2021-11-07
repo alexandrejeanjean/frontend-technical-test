@@ -15,10 +15,9 @@ const Form = ({ conversation, refetchMessages }: Props) => {
     if (!conversation.id) return null;
 
     const [message, setMessage] = useState('');
-    const authorId = getLoggedUserId();
+    const senderId = getLoggedUserId();
 
-    const { postMessage, error } = usePostMessage({ conversationId: conversation.id, authorId: authorId, message: message });
-
+    const { postMessage, error } = usePostMessage({ conversationId: conversation.id, authorId: senderId, message: message });
 
     const resetMessage = () => setMessage('');
 

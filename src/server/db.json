@@ -51,8 +51,22 @@
       "id": 4,
       "conversationId": 2,
       "timestamp": 1620284667,
-      "authorId": 2,
+      "authorId": 3,
       "body": "Bonjour c'est le premier message de la seconde conversation"
+    },
+    {
+      "authorId": 1,
+      "conversationId": 3,
+      "body": "Hello Elodie :)",
+      "timestamp": 1636306788437,
+      "id": 5
+    },
+    {
+      "authorId": 4,
+      "conversationId": 3,
+      "body": "Hello Alex :)",
+      "timestamp": 1636306788437,
+      "id": 6
     }
   ],
   "users": [
