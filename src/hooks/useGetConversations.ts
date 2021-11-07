@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "use-http";
+import { API_ENDPOINT } from "../server/contants";
 import { Conversation } from "../types/conversation";
-import { API_ENDPOINT } from "../utils/contants";
 import { getLoggedUserId } from "../utils/getLoggedUserId";
 
 const useGetConversations = () => {
@@ -12,7 +12,7 @@ const useGetConversations = () => {
     useEffect(() => { fetch() }, []);
 
     const fetch = async () => {
-        const conversations = await get(`/conversations/${loggedUserId}`)
+        const conversations = await get(`/conversations/${loggedUserId}`);
         if (response.ok) setConversations(conversations);
     }
 

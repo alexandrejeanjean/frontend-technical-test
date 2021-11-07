@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import useFetch from "use-http";
+import useFetch, { CachePolicies } from "use-http";
+import { API_ENDPOINT } from "../server/contants";
+import { Conversation } from "../types/conversation";
 import { Message } from "../types/message";
-import { API_ENDPOINT } from "../utils/contants";
 
 type Props = {
-    conversationId: number;
+    conversationId: Pick<Conversation, "id">;
 }
 
 const useGetConversationMessages = ({ conversationId }: Props) => {
     const [messages, setMessages] = useState<Message[]>([]);
-    const { get, response, loading, error } = useFetch(API_ENDPOINT)
+    const { get, response, loading, error } = useFetch(API_ENDPOINT, {
+        cacheLife: 0,
+        cachePolicy: CachePolicies.NO_CACHE,
+    })
 
     useEffect(() => { fetch() }, [conversationId]);
 
@@ -19,7 +23,7 @@ const useGetConversationMessages = ({ conversationId }: Props) => {
     }
 
 
-    return { messages, loading, error };
+    return { fetch, messages, loading, error };
 }
 
 export default useGetConversationMessages;

@@ -1,16 +1,17 @@
 import Head from 'next/head'
 import { FC, useState } from 'react'
 import ContactList from '../components/ContactList'
-import ConversationMessages from '../components/ConversationMessages'
-import Form from '../components/Form'
+import Conversation from '../components/Conversation'
 import styles from '../styles/Home.module.css'
+import { Conversation as IConversation } from "../types/conversation"
 
+export type ConversationId = Pick<IConversation, "id">;
 
 const Home: FC = () => {
   const year = new Date().getFullYear()
-  const [selectedConversation, setSelectedConversation] = useState(null);
+  const [selectedConversation, setSelectedConversation] = useState<ConversationId>(null);
 
-  const handleConversationSelection = (conversationId: number) => {
+  const handleConversationSelection = (conversationId) => {
     setSelectedConversation(conversationId);
   }
 
@@ -25,7 +26,7 @@ const Home: FC = () => {
         ></meta>
       </Head>
 
-      <header><h1 className="w-full py-5 mx-auto text-3xl font-extrabold tracking-tight text-center text-indigo-900 bg-yellow-400 border-b-2 border-gray-100 sm:text-4xl">LebonMessager</h1></header>
+      <header><h1 className="w-full py-5 mx-auto text-3xl font-extrabold tracking-tight text-center text-indigo-900 bg-yellow-400 border-b-2 border-gray-100 sm:text-4xl">LebonMot</h1></header>
 
       <main className="w-full overflow-hidden main-container-height">
         <div className="flex h-full pb-3">
@@ -34,10 +35,7 @@ const Home: FC = () => {
             <ContactList handleConversationSelection={handleConversationSelection} />
           </section>
           <section className="relative w-1/2">
-            <div className="absolute bottom-0 left-0 w-full px-3">
-              <ConversationMessages conversationId={selectedConversation} />
-              <Form />
-            </div>
+            <Conversation conversationId={selectedConversation} />
           </section>
         </div>
       </main>

@@ -19,3 +19,7 @@
 .list-height {
   height: calc(100% - 50px);
 }
+
+.message-list-height {
+  height: calc(100% - 100px);
+}

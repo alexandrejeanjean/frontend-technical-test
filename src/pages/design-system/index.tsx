@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import Contact from '../../components/Contact'
 import ContactList from '../../components/ContactList'
-import DialogBubble from '../../components/DialogBubble'
+import DialogBubble from '../../components/Dialog'
 import Form from '../../components/Form'
 
 const listMock = [{
