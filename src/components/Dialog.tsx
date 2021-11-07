@@ -1,7 +1,7 @@
 import { Message } from "../types/message";
 import { getLoggedUserId } from "../utils/getLoggedUserId";
 
-const Dialog = ({ body, authorId }: Partial<Message>) => {
+const Dialog = ({ body, authorId, ...props }: Partial<Message>) => {
   const loggedUserId = getLoggedUserId();
   if (authorId === loggedUserId) {
     return (

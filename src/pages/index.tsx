@@ -5,15 +5,18 @@ import Conversation from '../components/Conversation'
 import styles from '../styles/Home.module.css'
 import { Conversation as IConversation } from "../types/conversation"
 
-export type ConversationId = Pick<IConversation, "id">;
+export enum VIEW {
+  LIST = 'list',
+  CONVERSATION = 'conversation',
+}
 
 const Home: FC = () => {
   const year = new Date().getFullYear()
   const [selectedConversation, setSelectedConversation] = useState<IConversation>(null);
-  const [view, setView] = useState('list');
+  const [view, setView] = useState(VIEW.LIST);
 
   const handleConversationSelection = (conversation) => {
-    setView('conversation');
+    setView(VIEW.CONVERSATION);
     setSelectedConversation(conversation);
   }
 
@@ -40,7 +43,7 @@ const Home: FC = () => {
             <ContactList handleConversationSelection={handleConversationSelection} />
           </section>
           <section className="relative w-1/2">
-            <Conversation conversation={selectedConversation} />
+            <Conversation conversation={selectedConversation} setView={(view) => setView(view)} />
           </section>
         </div>
 
@@ -55,7 +58,7 @@ const Home: FC = () => {
             }
           </section>
           <section className="relative w-full h-full">
-            {view === 'conversation' && <Conversation conversation={selectedConversation} />}
+            {view === 'conversation' && <Conversation conversation={selectedConversation} setView={setView} />}
           </section>
         </div>
 
