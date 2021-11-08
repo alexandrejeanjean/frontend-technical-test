@@ -45,7 +45,7 @@ const Conversation = ({ conversation, setView }: Props) => {
                 <button type="button" className="absolute font-semibold text-indigo-700 top-6 left-3 lg:hidden" aria-label="Revenir à la liste de conversations" onClick={() => setView(VIEW.LIST)}>retour</button>
             </div>
 
-            <DialogList messages={messages} conversation={conversation} />
+            <DialogList messages={messages} conversation={conversation} refetchMessages={refetchMessages} />
             <div className="absolute bottom-0 left-0 w-full px-3">
                 <Form conversation={conversation} refetchMessages={refetchMessages} />
             </div>

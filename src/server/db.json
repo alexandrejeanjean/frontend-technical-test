@@ -67,6 +67,13 @@
       "body": "Hello Alex :)",
       "timestamp": 1636306788437,
       "id": 6
+    },
+    {
+      "authorId": 1,
+      "conversationId": 3,
+      "body": "Yolo :)",
+      "timestamp": 1636408009578,
+      "id": 7
     }
   ],
   "users": [
