@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { FC, useState } from 'react'
 import ContactList from '../components/ContactList'
 import Conversation from '../components/Conversation'
+import useDeviceDetect from '../hooks/useDeviceDetect'
 import styles from '../styles/Home.module.css'
 import { Conversation as IConversation } from "../types/conversation"
 
@@ -15,6 +16,7 @@ const Home: FC = () => {
   const [selectedConversation, setSelectedConversation] = useState<IConversation>(null);
   const [view, setView] = useState(VIEW.LIST);
 
+  const isMobile = useDeviceDetect();
 
   const handleConversationSelection = (conversation) => {
     setView(VIEW.CONVERSATION);
@@ -38,30 +40,34 @@ const Home: FC = () => {
       <main>
 
         {/* Desktop view */}
-        <div className="flex w-full h-full pb-3 overflow-hidden main-container-height lgd:hidden">
-          <section className="w-1/2 border-r-2 border-gray-100">
-            <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
-            <ContactList handleConversationSelection={handleConversationSelection} />
-          </section>
-          <section className="relative w-1/2">
-            <Conversation conversation={selectedConversation} setView={(view) => setView(view)} />
-          </section>
-        </div>
+        {!isMobile &&
+          <div className="flex w-full h-full pb-3 overflow-hidden main-container-height mdd:hidden">
+            <section className="w-1/2 border-r-2 border-gray-100">
+              <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
+              <ContactList handleConversationSelection={handleConversationSelection} />
+            </section>
+            <section className="relative w-1/2">
+              <Conversation conversation={selectedConversation} setView={(view) => setView(view)} />
+            </section>
+          </div>
+        }
 
         {/* Mobile view */}
-        <div className="h-full pb-3 overflow-hidden main-container-height lg:hidden">
-          <section className="border-r-2 border-gray-100">
-            {view === 'list' &&
-              <>
-                <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
-                <ContactList handleConversationSelection={handleConversationSelection} />
-              </>
-            }
-          </section>
-          <section className="relative w-full h-full">
-            {view === 'conversation' && <Conversation conversation={selectedConversation} setView={setView} />}
-          </section>
-        </div>
+        {isMobile &&
+          <div className="h-full pb-3 overflow-hidden main-container-height md:hidden">
+            <section className="border-r-2 border-gray-100">
+              {view === 'list' &&
+                <>
+                  <h2 className="pt-5 pb-5 ml-3 text-3xl font-semibold text-yellow-600 border-b-2 border-gray-100">Messages</h2>
+                  <ContactList handleConversationSelection={handleConversationSelection} />
+                </>
+              }
+            </section>
+            <section className="relative w-full h-full">
+              {view === 'conversation' && <Conversation conversation={selectedConversation} setView={setView} />}
+            </section>
+          </div>
+        }
 
       </main >
 

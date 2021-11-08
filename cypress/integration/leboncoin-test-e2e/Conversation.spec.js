@@ -15,19 +15,17 @@ describe('Conversations messages', () => {
     })
 
     it('Should render the right count of conversation\'s messages', () => {
-        // 3 for mobile view & 3 for desktop view
-        cy.get("[data-cy='conversation-list-item']").should('have.length', 6);
+        cy.get("[data-cy='conversation-list-item']").should('have.length', 3);
     })
 
     it('Should render the last message received value', () => {
-        cy.get("[data-cy='conversation-list-item']").first().should('contain.text', 'Bonjour c\'est le troisième message de la première conversation');
+        cy.get("[data-cy='conversation-list-item']").should('contain.text', 'Bonjour c\'est le troisième message de la première conversation');
     })
 
     it('User should send a new message', () => {
-        cy.get("[data-cy='textarea-message']").first().type('Hello world');
-        cy.get("[data-cy='submit-button']").first().click();
+        cy.get("[data-cy='textarea-message']").type('Hello world');
+        cy.get("[data-cy='submit-button']").click();
 
-        // 3 for mobile view & 4 for desktop view
-        cy.get("[data-cy='conversation-list-item']").should('have.length', 7);
+        cy.get("[data-cy='conversation-list-item']").should('have.length', 4);
     })
 })

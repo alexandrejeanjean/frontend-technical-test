@@ -12,8 +12,7 @@ describe('Conversations Contact list', () => {
     })
 
     it('Should render the right count of contact conversations', () => {
-        // 3 for mobile view & 3 for desktop view
-        cy.get("[data-cy='contact-list']").find('li').its('length').should('eq', 6);
+        cy.get("[data-cy='contact-list']").find('li').its('length').should('eq', 3);
     })
 
     it('Should render the right recipient name', () => {
