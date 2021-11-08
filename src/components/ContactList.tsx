@@ -26,7 +26,7 @@ const ContactList = ({ handleConversationSelection }: Props) => {
   }
 
   return (
-    <ul className='flex flex-col overflow-y-scroll list-height'>
+    <ul className='flex flex-col overflow-y-scroll list-height' data-cy="contact-list">
       {conversations.map((conversation) => (
         <li key={conversation.id}>
           <Contact conversation={conversation} handleConversationSelection={handleConversationSelection} />

@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "cypress"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -21,7 +24,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "cypress/integration/leboncoin-test-e2e/Conversation.spec.js",
+    "cypress/integration/leboncoin-test-e2e/ContactList.spec.js"
   ],
   "exclude": [
     "node_modules"
