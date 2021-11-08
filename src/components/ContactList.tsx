@@ -1,3 +1,4 @@
+import { useErrorHandler } from 'react-error-boundary';
 import useGetConversations from '../hooks/useGetConversations';
 import { Conversation } from '../types/conversation';
 import Contact from './Contact';
@@ -10,12 +11,18 @@ type Props = {
 const ContactList = ({ handleConversationSelection }: Props) => {
   const { conversations, loading, error } = useGetConversations();
 
+  const handleError = useErrorHandler();
+
   if (loading) {
     return (
       <div className="flex items-center justify-center w-full h-full">
         <Loading />
       </div>
     )
+  }
+
+  if (error) {
+    handleError(error);
   }
 
   return (

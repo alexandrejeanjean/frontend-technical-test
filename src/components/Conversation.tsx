@@ -1,3 +1,4 @@
+import { useErrorHandler } from "react-error-boundary";
 import useGetConversationMessages from "../hooks/useGetConversationMessages";
 import { VIEW } from "../pages";
 import { Conversation as IConversation } from "../types/conversation";
@@ -12,10 +13,12 @@ type Props = {
 }
 
 const Conversation = ({ conversation, setView }: Props) => {
-    console.log(conversation)
     if (!conversation) return null;
 
+    const handleError = useErrorHandler();
+
     const loggedUserId = getLoggedUserId();
+
     const contactName = loggedUserId === conversation.senderId ? conversation.recipientNickname : conversation.senderNickname;
 
     const { fetch: refetchMessages, messages, loading, error } = useGetConversationMessages({ conversationId: conversation.id });
@@ -26,6 +29,10 @@ const Conversation = ({ conversation, setView }: Props) => {
                 <Loading />
             </div>
         )
+    }
+
+    if (error) {
+        handleError(error);
     }
 
     return (

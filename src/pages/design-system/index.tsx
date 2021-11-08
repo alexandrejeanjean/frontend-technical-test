@@ -18,6 +18,22 @@ const listMock = [{
   senderNickname: "Océane Olmi"
 }]
 
+const mockMessageSender = {
+  "id": 1,
+  "conversationId": 1,
+  "timestamp": 1625637849,
+  "authorId": 1,
+  "body": "Bonjour c'est le premier message de la première conversation"
+};
+
+const mockMessageRecipient = {
+  "id": 1,
+  "conversationId": 1,
+  "timestamp": 1625637849,
+  "authorId": 2,
+  "body": "Bonjour c'est le second message de la première conversation"
+};
+
 const DesignSystem: FC = () => {
   return (
     <main className='p-10'>
@@ -26,53 +42,35 @@ const DesignSystem: FC = () => {
           <h1 className='text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
             <span className='block text-indigo-600'>Design system</span>
           </h1>
-          {/* <div className='flex mt-8 lg:mt-0 lg:flex-shrink-0'>
-            <div className='inline-flex rounded-md shadow'>
-              <a
-                href='#'
-                className='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700'
-              >
-                Get started
-              </a>
-            </div>
-            <div className='inline-flex ml-3 rounded-md shadow'>
-              <a
-                href='#'
-                className='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-indigo-600 bg-white border border-transparent rounded-md hover:bg-indigo-50'
-              >
-                Learn more
-              </a>
-            </div>
-          </div> */}
         </div>
       </div>
       <div className='mt-8 '>
         <h2 className='px-4 py-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
           <span className='block text-indigo-600'>Contact item</span>
         </h2>
-        <Contact senderNickname='Name Surname' />
+        <Contact conversation={listMock[0]} handleConversationSelection={console.log} />
       </div>
 
       <div className='mt-8 '>
         <h2 className='px-4 py-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
           <span className='block text-indigo-600'>Contact List</span>
         </h2>
-        <ContactList list={listMock} />
+        <ContactList handleConversationSelection={console.log} />
       </div>
 
-      <div className='mt-8'>
+      <div className='relative mt-8 z-99'>
         <h2 className='px-4 py-8 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
-          <span className='block text-indigo-600'>Form message</span>
+          <span className='block text-indigo-600'>Form</span>
         </h2>
-        <Form />
+        <Form conversation={listMock[0]} refetchMessages={console.log} />
       </div>
 
       <div className='mt-8'>
         <h2 className='px-4 py-8 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
           <span className='block text-indigo-600'>Dialog bubble</span>
         </h2>
-        <DialogBubble body="Hello leboncoin, nice to meet you" authorId={0} />
-        <DialogBubble body="Hello leboncoin, nice to meet you" authorId={1} />
+        <DialogBubble conversation={listMock[0]} message={mockMessageSender} />
+        <DialogBubble conversation={listMock[0]} message={mockMessageRecipient} />
       </div>
 
 

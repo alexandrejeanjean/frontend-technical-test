@@ -1,6 +1,5 @@
 
-import { mount } from 'enzyme';
-import Contact from '../components/Contact';
+import { shallow } from 'enzyme';
 import ContactList from "../components/ContactList";
 
 const listMock = [{
@@ -17,16 +16,13 @@ const listMock = [{
     senderNickname: "Océane Olmi"
 }]
 
+const handleConversationSelection = jest.fn();
+
 /** @test {Contact List Component} */
 describe('Contact List Component', () => {
     it('should render without crashing', () => {
-        const wrapper = mount(<ContactList list={listMock} />);
+        const wrapper = shallow(<ContactList handleConversationSelection={handleConversationSelection} />);
+
         expect(wrapper.find('ul')).toHaveLength(1);
     });
-
-    it('should display the good length of values', () => {
-        const wrapper = mount(<ContactList list={listMock} />);
-        expect(wrapper.find(Contact)).toHaveLength(2);
-    });
-
 });

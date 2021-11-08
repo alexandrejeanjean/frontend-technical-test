@@ -1,11 +1,13 @@
-import { render, screen } from "@testing-library/react"
-import App from "../pages"
+import { act, render, screen } from "@testing-library/react";
+import App from "../pages";
 
 describe("App", () => {
   it("should render correctly App", () => {
     render(<App />)
-    expect(
-      screen.getByText(/leboncoin/)
-    ).toBeInTheDocument()
+    act(() =>
+      expect(
+        screen.getByText(/leboncoin/)
+      ).toBeInTheDocument()
+    );
   })
 })

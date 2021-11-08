@@ -15,6 +15,7 @@ const Home: FC = () => {
   const [selectedConversation, setSelectedConversation] = useState<IConversation>(null);
   const [view, setView] = useState(VIEW.LIST);
 
+
   const handleConversationSelection = (conversation) => {
     setView(VIEW.CONVERSATION);
     setSelectedConversation(conversation);
@@ -69,4 +70,4 @@ const Home: FC = () => {
   )
 }
 
-export default Home
+export default Home;

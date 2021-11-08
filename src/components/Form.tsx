@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useErrorHandler } from 'react-error-boundary';
 import Send from "../assets/send-message.png";
 import usePostMessage from '../hooks/usePostMessage';
 import { Conversation } from '../types/conversation';
@@ -11,13 +12,19 @@ type Props = {
 }
 
 const Form = ({ conversation, refetchMessages }: Props) => {
+    if (!conversation) return null;
 
-    if (!conversation.id) return null;
+    const handleError = useErrorHandler();
 
     const [message, setMessage] = useState('');
+    const [formErrorMessage, setFormErrorMessage] = useState('');
     const senderId = getLoggedUserId();
 
     const { postMessage, error } = usePostMessage({ conversationId: conversation.id, authorId: senderId, message: message });
+
+    if (error) {
+        handleError(error);
+    }
 
     const resetMessage = () => setMessage('');
 
@@ -27,6 +34,10 @@ const Form = ({ conversation, refetchMessages }: Props) => {
 
 
     const handleChange = (event) => {
+        const value = event.target.value;
+        if (value && formErrorMessage.length > 0) {
+            setFormErrorMessage('');
+        }
         setMessage(event.target.value);
     }
 
@@ -34,14 +45,14 @@ const Form = ({ conversation, refetchMessages }: Props) => {
         event.preventDefault();
 
         if (message.length === 0) {
-            throw new Error("Missing message value");
+            return setFormErrorMessage("Veuillez saisir au moins 1 caractère pour envoyer le message");
         }
 
         postMessage().then(() => {
             resetMessage();
             refetchMessages();
         }).catch(error => {
-            console.log("error", error);
+            handleError(error);
         })
     }
 
@@ -56,6 +67,7 @@ const Form = ({ conversation, refetchMessages }: Props) => {
                     <span className="sr-only">Envoyer le message</span>
                     <Image className="transform -rotate-45" src={Send} alt="logo d'un avion en papier" />
                 </button>
+                {formErrorMessage && <span className="mt-2 text-sm text-red-500">{formErrorMessage}</span>}
             </div>
         </form>
     )
