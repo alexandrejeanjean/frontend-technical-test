@@ -74,6 +74,13 @@
       "body": "Yolo :)",
       "timestamp": 1636408009578,
       "id": 7
+    },
+    {
+      "authorId": 1,
+      "conversationId": 3,
+      "body": "Plop",
+      "timestamp": 1636409218142,
+      "id": 8
     }
   ],
   "users": [
