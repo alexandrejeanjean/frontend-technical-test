@@ -11,7 +11,8 @@ type Props = {
 const usePostMessage = ({ conversationId, authorId, message }: Props) => {
     const { post, response, loading, error } = useFetch(API_ENDPOINT)
 
-    const params = { authorId: authorId, conversationId: conversationId, body: message, timestamp: Date.now(), };
+    const timestamp = Math.round((new Date()).getTime() / 1000);
+    const params = { authorId: authorId, conversationId: conversationId, body: message, timestamp: timestamp, };
 
     const postMessage = async () => {
         const message = await post(`/messages/${conversationId}`, params);

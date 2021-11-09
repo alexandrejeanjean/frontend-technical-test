@@ -9,12 +9,14 @@ import { useModal } from '../../hooks/useModal'
 
 const listMock = [{
   id: 0,
+  lastMessageTimestamp: 1620284667,
   recipientId: 0,
   recipientNickname: "Recipient nickname",
   senderId: 0,
   senderNickname: "Alexandre Jeanjean"
 }, {
   id: 1,
+  lastMessageTimestamp: 1620284667,
   recipientId: 1,
   recipientNickname: "Recipient nickname",
   senderId: 1,

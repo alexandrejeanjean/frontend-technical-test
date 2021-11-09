@@ -67,55 +67,6 @@
       "body": "Hello Alex :)",
       "timestamp": 1636306788437,
       "id": 6
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "Yolo :)",
-      "timestamp": 1636408009578,
-      "id": 7
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "Plop",
-      "timestamp": 1636409218142,
-      "id": 8
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "Hello",
-      "timestamp": 1636445950783,
-      "id": 9
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "test",
-      "timestamp": 1636445974376,
-      "id": 10
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "yolo",
-      "timestamp": 1636446250771,
-      "id": 11
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "retest",
-      "timestamp": 1636446265687,
-      "id": 12
-    },
-    {
-      "authorId": 1,
-      "conversationId": 3,
-      "body": "Hello :)",
-      "timestamp": 1636473162836,
-      "id": 13
     }
   ],
   "users": [
