@@ -1,8 +1,11 @@
 import type { FC } from 'react'
+import { ConfirmationModal } from '../../components/ConfirmationModal'
 import Contact from '../../components/Contact'
 import ContactList from '../../components/ContactList'
 import DialogBubble from '../../components/Dialog'
 import Form from '../../components/Form'
+import { Modal } from '../../components/Modal'
+import { useModal } from '../../hooks/useModal'
 
 const listMock = [{
   id: 0,
@@ -35,6 +38,9 @@ const mockMessageRecipient = {
 };
 
 const DesignSystem: FC = () => {
+
+  const { isShown, toggle } = useModal();
+
   return (
     <main className='p-10'>
       <div className='bg-gray-50'>
@@ -69,8 +75,27 @@ const DesignSystem: FC = () => {
         <h2 className='px-4 py-8 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
           <span className='block text-indigo-600'>Dialog bubble</span>
         </h2>
-        <DialogBubble conversation={listMock[0]} message={mockMessageSender} />
-        <DialogBubble conversation={listMock[0]} message={mockMessageRecipient} />
+        <DialogBubble conversation={listMock[0]} message={mockMessageSender} refetchMessages={console.log} />
+        <DialogBubble conversation={listMock[0]} message={mockMessageRecipient} refetchMessages={console.log} />
+      </div>
+
+      <div className='mt-8'>
+        <h2 className='px-4 py-8 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 bg-gray-50 sm:text-4xl'>
+          <span className='block text-indigo-600'>Confirm modal</span>
+        </h2>
+        <Modal
+          isShown={isShown}
+          hide={toggle}
+          headerText="Confirmation"
+          modalContent={
+            <ConfirmationModal
+              onConfirm={toggle}
+              onCancel={toggle}
+              message="Etes-vous sur de vouloir supprimer ce message ?"
+            />
+          }
+        />
+        <button type="button" onClick={toggle} className="px-5 py-2 text-white bg-indigo-700 rounded-md" >Open modal</button>
       </div>
 
 

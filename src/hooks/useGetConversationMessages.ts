@@ -9,6 +9,7 @@ type Props = {
 
 const useGetConversationMessages = ({ conversationId }: Props) => {
     const [messages, setMessages] = useState<Message[]>([]);
+
     const { get, response, loading, error } = useFetch(API_ENDPOINT, {
         cacheLife: 0,
         cachePolicy: CachePolicies.NO_CACHE,

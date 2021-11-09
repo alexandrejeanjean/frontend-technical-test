@@ -10,7 +10,13 @@ type Props = {
 }
 
 const DialogList = ({ messages, conversation, refetchMessages }: Props) => {
-    const reverseMessageArray = useMemo(() => messages.reverse(), [messages]);
+    const reverseMessageArray = useMemo(() => {
+        if (messages) {
+            return messages.reverse()
+        }
+        return [];
+
+    }, [messages]);
     return (
         <ul className='flex flex-col-reverse p-3 overflow-y-scroll message-list-height' data-cy="conversation-list">
             {reverseMessageArray.map((message) => (

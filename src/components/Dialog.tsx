@@ -1,3 +1,4 @@
+import { useErrorHandler } from "react-error-boundary";
 import useDeleteMessage from "../hooks/useDeleteMessage";
 import { useModal } from "../hooks/useModal";
 import { Conversation } from "../types/conversation";
@@ -17,14 +18,20 @@ const Dialog = ({ message, conversation, refetchMessages }: Props) => {
 
   const { isShown, toggle } = useModal();
 
+  const handleError = useErrorHandler();
+
   const { deleteMessage, loading, error } = useDeleteMessage();
+
+  if (error) {
+    handleError(error);
+  }
 
   const onConfirm = () => {
     console.log(message)
     deleteMessage({ messageId: message.id }).then(() => {
       refetchMessages();
     }).catch(error => {
-      console.log("error", error);
+      handleError(error);
     }).finally(() => toggle());
   }
 
