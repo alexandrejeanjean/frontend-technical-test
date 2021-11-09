@@ -7,10 +7,10 @@ type Props = {
 }
 
 const useDeleteMessage = () => {
-    const { delete: remove, response, loading, error } = useFetch(API_ENDPOINT);
+    const { del, response, loading, error } = useFetch(API_ENDPOINT);
 
     const deleteMessage = async ({ messageId }: Props) => {
-        const deleteMsg = await remove(`/message/${messageId}`);
+        const deleteMsg = await del(`/message/${messageId}`);
         if (response.ok) console.log("DELETE SUCCESS");
     }
 
