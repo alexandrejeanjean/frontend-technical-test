@@ -11,6 +11,10 @@ type Props = {
 const ContactList = ({ handleConversationSelection }: Props) => {
   const { conversations, loading, error } = useGetConversations();
 
+  const sortedConversationByTimestamp = conversations.sort(function (x, y) {
+    return (y.lastMessageTimestamp as number) - (x.lastMessageTimestamp as number);
+  })
+
   const handleError = useErrorHandler();
 
   if (loading) {
@@ -27,7 +31,7 @@ const ContactList = ({ handleConversationSelection }: Props) => {
 
   return (
     <ul className='flex flex-col overflow-y-scroll list-height' data-cy="contact-list">
-      {conversations.map((conversation) => (
+      {sortedConversationByTimestamp.map((conversation) => (
         <li key={conversation.id}>
           <Contact conversation={conversation} handleConversationSelection={handleConversationSelection} />
         </li>
