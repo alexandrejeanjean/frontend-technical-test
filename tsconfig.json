@@ -7,7 +7,7 @@
       "esnext"
     ],
     "types": [
-      "cypress"
+      "cypress",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -26,9 +26,11 @@
     "**/*.ts",
     "**/*.tsx",
     "cypress/integration/leboncoin-test-e2e/Conversation.spec.js",
-    "cypress/integration/leboncoin-test-e2e/ContactList.spec.js"
+    "cypress/integration/leboncoin-test-e2e/ContactList.spec.js",
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.spec.js",
+    "**/*.spec.js",
   ]
 }

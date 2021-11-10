@@ -21,7 +21,7 @@ const DialogList = ({ messages, conversation, refetchMessages }: Props) => {
         <ul className='flex flex-col-reverse p-3 overflow-y-scroll message-list-height' data-cy="conversation-list">
             {reverseMessageArray.map((message) => (
                 <li key={message.id} data-cy="conversation-list-item">
-                    <Dialog key={message.id} message={message} conversation={conversation} refetchMessages={refetchMessages} />
+                    <Dialog message={message} conversation={conversation} refetchMessages={refetchMessages} />
                 </li>
             ))}
         </ul>
