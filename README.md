@@ -2,11 +2,35 @@
 
 You will find on the dev branch the result of my test.
 
+## Installation
+
+> git clone
+> cd frontend-technical-test
+> git checkout dev
+> npm i
+
+## Project structure
+cypress/
+  - integration/
+    - leboncoin-test-e2e/
+src/
+  - __tests__/ 
+  - components/
+  - errors/
+  - hooks/
+  - pages/
+    - design-system/
+  - server/
+  - styles/
+  - types/
+  - utils/
+
 What I have done :
 - First I have created components you can see in ``/design-system`` page.
-- Then I have designed a simplistic interface wich is responsive. I have opt for a simple toggle display instead of a navigation. Maybe that could have been a better solution.
+- Then I have designed a simplistic interface wich is responsive using ``tailwind`` to gain a little bit of time. I have opt for a simple toggle display instead of a navigation. Maybe that could have been a better solution.
 - I have tried to add accessibilities label, sr-only, and keyboard control as much as possible.
 - I have used ``use-http`` npm package because it provides hooks support and at first glance I though it would be a pretty solution for caching datas (It was my first time using this library). But, I was not able to clear the cache of ``GET`` request when I needed it, like after a ``POST``. So, fetching messages is not as optimized as I want it to be.
+- I have managed errors thanks to ``ErrorBoundary`` feature. Really simplistic feature. Could be improved with ``http`` error and ``network`` error.
 - I wrote some unit tests, visual regression tests (snapshots), and end to end tests using cypress.
 - I don't know why, but I receive a ``404 not found`` when I want to ``DELETE`` a message from database. I have test a lot of different params to be sure it is not from my work... But I did not find the answer. However, you will find that I have create all the process, from confirmation modal, to API call.
 
