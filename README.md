@@ -48,3 +48,7 @@ It was a good challenge for me, hope you will find some interesting pieces.
 I wish you a good day :)
 
 Alexandre
+
+### Potential issue on installation
+
+Depending on your environnement maybe you will need to use ``npm install --force`` because react 17 not working with ``enzyme-adapter-16``.
