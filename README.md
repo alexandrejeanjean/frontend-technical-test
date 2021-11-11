@@ -1,71 +1,23 @@
-# Context :
+# Hello leboncoin team :) :
 
-At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
+You will find on the dev branch the result of my test.
 
-Your job is to create the interface to consult those messages.
-The interface needs to work on both desktop & mobile devices.
+What I have done :
+- First I have created components you can see in ``/design-system`` page.
+- Then I have designed a simplistic interface wich is responsive. I have opt for a simple toggle display instead of a navigation. Maybe that could have been a better solution.
+- I have tried to add accessibilities label, sr-only, and keyboard control as much as possible.
+- I have used ``use-http`` npm package because it provides hooks support and at first glance I though it would be a pretty solution for caching datas (It was my first time using this library). But, I was not able to clear the cache of ``GET`` request when I needed it, like after a ``POST``. So, fetching messages is not as optimized as I want it to be.
+- I wrote some unit tests, visual regression tests (snapshots), and end to end tests using cypress.
+- I don't know why, but I receive a ``404 not found`` when I want to ``DELETE`` a message from database. I have test a lot of different params to be sure it is not from my work... But I did not find the answer. However, you will find that I have create all the process, from confirmation modal, to API call.
 
-In addition to your code, a README explaining your thought process and your choices would be appreciated.
+What I have not done :
+- I did not provide robust safety guards. I don't understand what was needed to do. Maybe it was to had fake token in authorization header ? 
+- I did not create ``GET`` request on ``users`` and so neither ``POST`` request to create a new conversation. 
 
-# Exercice :
+I know I have not done everything you ask to, but after around 18 to 20 hours of work, I thought it will be enough for you to see how I code, structure and think front-end applications.
 
-- Display a list of all the conversations
-- Allow the user to select a conversation
-  - Inside the conversation, there is a list of all the messages between these two users.
-  - As a user, you can type and send new messages in this conversation
+It was a good challenge for me, hope you will find some interesting pieces.
 
-**As your application can be used by millions of users, make sure to provide some robust safety guards.**
+I wish you a good day :)
 
-### Sketches :
-
-Obvisouly, it is up to you to make something nice and pretty, you are free to design it the way you like. The sketches are here to give you an idea on how it should look.
-
-<details>
-  <summary>Click to see the sketches</summary>
-  
-Mobile list :
-
-![](./sketches/list-mobile.jpg)
-
-Desktop list :
-
-![](./sketches/list-desktop.jpg)
-
-Mobile conversation :
-
-![](./sketches/conv-mobile.jpg)
-
-Desktop conversation :
-
-![](./sketches/conv-desktop.jpg)
-
-</details>
-
-### API :
-
-You can find the API swagger file in `docs/api-swagger.yaml`.
-
-For a better readibility, you can view it on [https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
-
----
-
-## Bonus 1 :
-
-We provide some conversation samples, but can you improve the app so the user can now create new conversations ?
-
-## Bonus 2 :
-
-Our infrastructure is a bit shaky.. Sometimes the servers are crashing. “It’s not you, it’s me”, but maybe you can display something nice to warn the user and handle it gracefully.
-
-## Do you want to make the app even better ?
-
-Feel free to make as many improvements as you like.
-We love creativity and technical challenges.
-
-If you are out of ideas, here are some thoughts :
-
-- As we want to reach our users anywhere, we need to make sure the app is performing well. What can you do to make it really fast ?
-
-- Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
-
-- We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+Alexandre
