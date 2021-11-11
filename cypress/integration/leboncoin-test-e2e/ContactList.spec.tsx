@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import { API_ENDPOINT } from "../../constant";
+import { APP_ENDPOINT } from "../../constant";
 
 describe('Conversations Contact list', () => {
     beforeEach(() => {
-        cy.visit(API_ENDPOINT)
+        cy.visit(APP_ENDPOINT)
     })
 
     it('Should render the list of contact conversations', () => {
@@ -12,10 +12,10 @@ describe('Conversations Contact list', () => {
     })
 
     it('Should render the right count of contact conversations', () => {
-        cy.get("[data-cy='contact-list']").find('li').its('length').should('eq', 3);
+        cy.get("[data-cy='contact-list']").children().find('button').its('length').should('eq', 3);
     })
 
     it('Should render the right recipient name', () => {
-        cy.get("[data-cy='contact-list']").find('li').first().should('contain.text', 'Jeremie');
+        cy.get("[data-cy='contact-list']").children().find('button').first().should('contain.text', 'Elodie');
     })
 })

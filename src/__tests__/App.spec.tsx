@@ -1,13 +1,18 @@
-import { act, render, screen } from "@testing-library/react";
+import { mount } from 'enzyme';
 import App from "../pages";
 
 describe("App", () => {
-  it("should render correctly App", () => {
-    render(<App />)
-    act(() =>
-      expect(
-        screen.getByText(/leboncoin/)
-      ).toBeInTheDocument()
-    );
-  })
+  const wrapper = mount(<App />);
+
+  it('should render header', () => {
+    expect(wrapper.find('header')).toHaveLength(1);
+  });
+
+  it('should render main', () => {
+    expect(wrapper.find('main')).toHaveLength(1);
+  });
+
+  it('should render footer', () => {
+    expect(wrapper.find('footer')).toHaveLength(1);
+  });
 })

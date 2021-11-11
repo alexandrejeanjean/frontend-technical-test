@@ -23,13 +23,18 @@ const mockMessage = {
 
 /** @test {Dialog Component} */
 describe('Dialog Component', () => {
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = mount(<Dialog message={mockMessage} conversation={mockConversation} refetchMessages={refetchMessages} />);
+    });
+
     it('should render without crashing', () => {
-        const wrapper = mount(<Dialog message={mockMessage} conversation={mockConversation} refetchMessages={refetchMessages} />);
+        mount(<Dialog message={mockMessage} conversation={mockConversation} refetchMessages={refetchMessages} />);
         expect(wrapper.find('p')).toHaveLength(1);
     });
 
     it('should display the good value', () => {
-        const wrapper = mount(<Dialog message={mockMessage} conversation={mockConversation} refetchMessages={refetchMessages} />);
 
         expect((wrapper).prop('message')).toEqual({
             "id": 1,
@@ -39,5 +44,9 @@ describe('Dialog Component', () => {
             "body": "Bonjour c'est le premier message de la première conversation"
         });
     });
+
+    it('match snapshot', () => {
+        expect(wrapper).toMatchSnapshot()
+    })
 
 });

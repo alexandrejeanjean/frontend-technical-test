@@ -1,4 +1,3 @@
-
 import { expect, jest } from '@jest/globals';
 import { mount } from 'enzyme';
 import Contact from "../components/Contact";
@@ -16,15 +15,18 @@ const handleConversationSelection = jest.fn();
 
 /** @test {Contact Component} */
 describe('Contact Component', () => {
-    it('should render without crashing', () => {
-        const wrapper = mount(<Contact conversation={mockConversation} handleConversationSelection={handleConversationSelection} />);
 
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = mount(<Contact conversation={mockConversation} handleConversationSelection={handleConversationSelection} />);
+    });
+
+    it('should render without crashing', () => {
         expect(wrapper.find('button')).toHaveLength(1);
     });
 
     it('should display the good value', () => {
-        const wrapper = mount(<Contact conversation={mockConversation} handleConversationSelection={handleConversationSelection} />);
-
         expect((wrapper).prop('conversation')).toEqual({
             id: 0,
             lastMessageTimestamp: 1636306788437,
@@ -35,4 +37,10 @@ describe('Contact Component', () => {
         });
     });
 
+
+    it('match snapshot', () => {
+        expect(wrapper).toMatchSnapshot()
+    })
+
 });
+
