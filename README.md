@@ -4,15 +4,16 @@ You will find on the dev branch the result of my test.
 
 ## Installation
 
-> git clone
-> cd frontend-technical-test
-> git checkout dev
-> npm i
+- git clone 
+- cd frontend-technical-test 
+- git checkout dev 
+- npm i 
 
 ## Project structure
 cypress/
   - integration/
-    - leboncoin-test-e2e/
+    - leboncoin-test-e2e
+    
 src/
   - __tests__/ 
   - components/
@@ -24,6 +25,8 @@ src/
   - styles/
   - types/
   - utils/
+
+## What you will find
 
 What I have done :
 - First I have created components you can see in ``/design-system`` page.
